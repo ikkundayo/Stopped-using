@@ -38,13 +38,9 @@
             <% end %>
           </td>
           <td>
-            <% if @books.bookcomments_by? %>
-              <p>コメント数：<%= @books.bookcomments.count %></p>
-            <% else %>
-              <p>コメント数：0</p>
-            <% end %>
+            <p>コメント数：<%= @books.bookcomments.count %></p>
           </td>
-           <% if @books.user_id == current_user.id %>
+          <% if @books.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@books), class: "btn btn-sm btn-success edit_book_#{@books.id}" %></td>
             <td><%= link_to 'Destroy', @books, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
@@ -65,12 +61,10 @@
             </td>
             <% if f.user == current_user %>
               <td>
-                <%= link_to "Destroy", book_bookcomments_path(f), method: :delete %>
-    <% end %>
-
-
-            </td>
-         </tr>
+                <%= link_to "Destroy", book_bookcomment_path(f.book_id,f.id), method: :delete %>
+              </td>
+            <% end %>
+          </tr>
         </table>
       <% end %>
 

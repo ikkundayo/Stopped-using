@@ -23,8 +23,5 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  def bookcomments_by?
-  Bookcomment.exists?(:comment)
-  end
 
 end

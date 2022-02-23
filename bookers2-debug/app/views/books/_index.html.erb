@@ -33,11 +33,7 @@
           <% end %>
         </td>
         <td>
-          <% if book.bookcomments_by? %>
-            <p>コメント数：<%= book.bookcomments.count %></p>
-          <% else %>
-            <p>コメント数：0</p>
-          <% end %>
+          <p>コメント数：<%= book.bookcomments.count %></p>
         </td>
       </tr>
     <% end %>

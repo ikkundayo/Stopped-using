@@ -7,10 +7,6 @@ class Book < ApplicationRecord
   favorites.exists?(user_id: user.id)
   end
 
-  def bookcomments_by?
-  bookcomments.exists?(:comment)
-  end
-
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 end
