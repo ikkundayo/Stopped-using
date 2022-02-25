@@ -10,9 +10,13 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <p id="notice"><%= notice %></p>
-      <%= render 'searchs/form' %>
+    <main>
+      <p id="notice"><%= notice %></p>
+      <div class="d-flex justify-content-center mb-2">
+        <%= render 'searchs/form' %>
+      </div>
       <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 
