@@ -22,22 +22,8 @@
           <td>
             <%= @books.body %>
           </td>
-          <td>
-            <% if @books.favorited_by?(current_user) %>
-              <p>
-                <%= link_to book_favorites_path(@books), method: :delete do %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= @books.favorites.count %> いいね
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to book_favorites_path(@books), method: :post do %>
-                <i class="fas fa-heart" aria-hidden="true"></i>
-                <%= @book.favorites.count %> いいね
-                <% end %>
-              </p>
-            <% end %>
+          <td id="favorite_btn_<%= @books.id %>">
+            <%= render 'favorites/favorite', book: @books %>
           </td>
           <td>
             <p>コメント数：<%= @books.bookcomments.count %></p>
@@ -49,34 +35,12 @@
         </tr>
       </table>
 
-      <% @books.bookcomments.each do |f|%>
-        <table>
-          <tr>
-            <td>
-              <%= link_to(f.user) do %>
-                <%= image_tag f.user.get_profile_image(50,50) %><br>
-                <%= f.user.name %>
-              <% end %>
-            </td>
-            <td>
-              <%= f.comment %>
-            </td>
-            <% if f.user == current_user %>
-              <td>
-                <%= link_to "Destroy", book_bookcomment_path(f.book_id,f.id), method: :delete %>
-              </td>
-            <% end %>
-          </tr>
-        </table>
-      <% end %>
+      <table class="book-comments">
+        <%= render "bookcomments/comment", books: @books %>
+      </table>
 
       <div>
-        <%#= render 'bookcoments/bookomment', book: book %>
-        <%= form_with model: [@books, @book_comment], local: false do |f| %>
-          <%= f.text_area :comment, rows: '5', cols:'83' %>
-          <%= f.submit "送信する" %>
-        <% end %>
+        <%= render 'bookcomments/bookcomment', books: @books, book_comment: @book_comment %>
       </div>
-    </div>
   </div>
 </div>
