@@ -4,7 +4,7 @@ class Book < ApplicationRecord
   has_many :bookcomments, dependent: :destroy
 
   def favorited_by?(user)
-  favorites.exists?(user_id: user.id)
+    favorites.exists?(user_id: user.id)
   end
 
   def self.search_for(content, method)

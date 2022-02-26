@@ -5,7 +5,7 @@ class BookcommentsController < ApplicationController
     comment.user_id = current_user.id
     comment.book_id = book.id
     comment.save
-    redirect_to book_path(book)
+    #redirect_to book_path(book)
   end
 
   def destroy
