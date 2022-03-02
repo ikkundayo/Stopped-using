@@ -22,6 +22,7 @@
           <td>
             <%= @books.body %>
           </td>
+          <td><%= render 'books/tag_list', tag_list: @books.tag_list %></td>
           <td id="favorite_btn_<%= @books.id %>">
             <%= render 'favorites/favorite', book: @books %>
           </td>

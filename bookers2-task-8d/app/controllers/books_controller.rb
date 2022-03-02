@@ -15,6 +15,9 @@ class BooksController < ApplicationController
       @books= Book.all.order(star: :desc)
     else
       @books = Book.all
+      if params[:tag_name]
+        @books = Book.tagged_with("#{params[:tag_name]}")
+      end
     end
   end
 
@@ -56,6 +59,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :star)
+    params.require(:book).permit(:title, :body, :star, :tag_list)
   end
 end
