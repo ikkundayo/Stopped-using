@@ -9,7 +9,13 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    if params[:button].to_i == 1
+      @books= Book.all.order(created_at: :desc)
+    elsif params[:button].to_i == 2
+      @books= Book.all.order(star: :desc)
+    else
+      @books = Book.all
+    end
   end
 
   def create
