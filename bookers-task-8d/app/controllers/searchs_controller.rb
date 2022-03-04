@@ -8,7 +8,10 @@ class SearchsController < ApplicationController
 		if @model == 'user'
 			@records = User.search_for(@content, @method)
 		elsif @model == 'book'
-		  @records = Book.search_for(@content, @method)	
+		  @records = Book.search_for(@content, @method)
+		# else
+  #     @books = Book.tagged_with(params[:tag_name])
+		#   @records = @books.where('tag_name LIKE ?', '%' + @content + '%')
 		end
 	end
 
